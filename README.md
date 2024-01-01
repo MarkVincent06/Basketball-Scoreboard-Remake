@@ -1,6 +1,6 @@
 # Basketball Scoreboard Remake
 
-- <a href="https://cleofe-basketball-scoreboard.netlify.app/">Live Preview</a>
+- <a href="https://cleofe-basketball-scoreboard.netlify.app/" target="_blank">Live Preview</a>
 
 ## Welcome! 👋
 
