@@ -9,6 +9,8 @@
   --pink: #f94f6d;
   --fadedblue: #9aabd8;
   --black: #080001;
+  --green: #10b981;
+  --yellow: #fcd34d;
 }
 
 * {
@@ -21,13 +23,16 @@ body {
 
 /* Containers */
 .container {
-  width: 36rem;
-  height: 24rem;
+  width: 47rem;
+  height: 30rem;
   margin: 50px auto;
-  padding: 50px 0;
+  padding: 50px 30px;
   background: var(--darkblue);
   display: flex;
   justify-content: space-around;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .board {
@@ -35,6 +40,13 @@ body {
   flex-direction: column;
   gap: 20px;
   text-align: center;
+}
+
+.board-timer {
+  border: 5px solid var(--white);
+  padding: 13px 20px 0px 20px;
+  border-radius: 0.31rem;
+  margin-bottom: 10px;
 }
 
 .board-score {
@@ -45,6 +57,7 @@ body {
   place-items: center;
   padding-top: 12px;
   border-radius: 0.31rem;
+  border: 2px solid transparent;
 }
 
 .add-points-btns {
@@ -53,6 +66,12 @@ body {
 }
 
 /* Topography */
+.board-timer p {
+  font-family: Cursed Timer ULiL, sans-serif;
+  font-size: 5.625rem;
+  color: var(--green);
+}
+
 .board-title {
   color: var(--white);
   font-size: 2.5rem;
@@ -64,22 +83,77 @@ body {
   color: var(--pink);
 }
 
+.board-period h4,
+.foul-text {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.foul-text {
+  margin-top: 10px;
+}
+
+.foul-number {
+  font-family: Cursed Timer ULiL, sans-serif;
+  font-size: 3.625rem;
+  color: var(--yellow);
+  background: var(--black);
+  border-radius: 0.31rem;
+  padding: 10px 0 0 0;
+}
+
+.board-period span {
+  border: 5px solid var(--white);
+  border-radius: 0.31rem;
+  font-family: Cursed Timer ULiL, sans-serif;
+  color: var(--green);
+  padding: 6px 10px 0 10px;
+}
+
 /* Buttons */
-.add-points-btn {
+button {
   border-radius: 0.31rem;
   border: 2px solid var(--fadedblue);
   font-family: Cursed Timer ULiL, sans-serif;
   font-size: 1.125rem;
   color: var(--fadedblue);
   background: none;
-  padding: 7px 10px 4px 10px;
-  line-height: 1.73825rem;
   transition: 100ms color ease-in-out, 100ms border ease-in-out;
   cursor: pointer;
+}
+
+.add-points-btn {
+  padding: 7px 10px 4px 10px;
+  line-height: 1.73825rem;
+}
+
+.next-period-btn {
+  width: 50%;
+  margin: 5px auto;
+  padding: 7px 10px 0 10px;
+}
+
+.add-foul-btn {
+  padding: 5px 10px 0 10px;
 }
 
 /* Hovers */
 .add-points-btn:hover {
   color: var(--pink);
   border-color: var(--pink);
+}
+
+.next-period-btn:hover {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.add-foul-btn:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+/* JS-related css */
+.highlight-border {
+  border: 2px solid var(--pink);
 }

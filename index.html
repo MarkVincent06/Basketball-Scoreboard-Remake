@@ -10,7 +10,7 @@
     <div class="container">
       <div class="board">
         <h3 class="board-title">HOME</h3>
-        <div class="board-score">
+        <div class="board-score" id="home-board-score">
           <p class="board-points" id="home-board-points">0</p>
         </div>
         <div class="add-points-btns">
@@ -18,10 +18,24 @@
           <button class="add-points-btn" onclick="add2HomePoints()">+2</button>
           <button class="add-points-btn" onclick="add3HomePoints()">+3</button>
         </div>
+        <h4 class="foul-text">FOULS</h4>
+        <p class="foul-number">00</p>
+        <button class="add-foul-btn">Add Foul</button>
       </div>
+
+      <div class="board">
+        <div class="board-timer">
+          <p>08:29</p>
+        </div>
+        <div class="board-period">
+          <h4>PERIOD <span>2</span></h4>
+        </div>
+        <button class="next-period-btn">Next Period</button>
+      </div>
+
       <div class="board">
         <h3 class="board-title">GUEST</h3>
-        <div class="board-score">
+        <div class="board-score" id="guest-board-score">
           <p class="board-points" id="guest-board-points">0</p>
         </div>
         <div class="add-points-btns">
@@ -29,6 +43,9 @@
           <button class="add-points-btn" onclick="add2GuestPoints()">+2</button>
           <button class="add-points-btn" onclick="add3GuestPoints()">+3</button>
         </div>
+        <h4 class="foul-text">FOULS</h4>
+        <p class="foul-number">00</p>
+        <button class="add-foul-btn">Add Foul</button>
       </div>
     </div>
     <script src="script.js"></script>
