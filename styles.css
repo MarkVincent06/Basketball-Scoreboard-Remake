@@ -1,0 +1,85 @@
+@font-face {
+  font-family: Cursed Timer ULiL;
+  src: url(./fonts/CursedTimerULiL.ttf);
+}
+
+:root {
+  --darkblue: #1b244a;
+  --white: #eee;
+  --pink: #f94f6d;
+  --fadedblue: #9aabd8;
+  --black: #080001;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+}
+
+/* Containers */
+.container {
+  width: 36rem;
+  height: 24rem;
+  margin: 50px auto;
+  padding: 50px 0;
+  background: var(--darkblue);
+  display: flex;
+  justify-content: space-around;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.board-score {
+  width: 10.6rem;
+  height: 7.5rem;
+  background: var(--black);
+  display: grid;
+  place-items: center;
+  padding-top: 12px;
+  border-radius: 0.31rem;
+}
+
+.add-points-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Topography */
+.board-title {
+  color: var(--white);
+  font-size: 2.5rem;
+}
+
+.board-points {
+  font-family: Cursed Timer ULiL, sans-serif;
+  font-size: 5.625rem;
+  color: var(--pink);
+}
+
+/* Buttons */
+.add-points-btn {
+  border-radius: 0.31rem;
+  border: 2px solid var(--fadedblue);
+  font-family: Cursed Timer ULiL, sans-serif;
+  font-size: 1.125rem;
+  color: var(--fadedblue);
+  background: none;
+  padding: 7px 10px 4px 10px;
+  line-height: 1.73825rem;
+  transition: 100ms color ease-in-out, 100ms border ease-in-out;
+  cursor: pointer;
+}
+
+/* Hovers */
+.add-points-btn:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}

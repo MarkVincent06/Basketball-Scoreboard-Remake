@@ -1,16 +1,36 @@
 <html>
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <div class="container">
-            <div>
-                <h3>HOME</h3>
-            </div>
-            <div>
-                <h3>GUEST</h3>
-            </div>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="board">
+        <h3 class="board-title">HOME</h3>
+        <div class="board-score">
+          <p class="board-points" id="home-board-points">0</p>
         </div>
-        <script src="index.js"></script>
-    </body>
+        <div class="add-points-btns">
+          <button class="add-points-btn" onclick="add1HomePoint()">+1</button>
+          <button class="add-points-btn" onclick="add2HomePoints()">+2</button>
+          <button class="add-points-btn" onclick="add3HomePoints()">+3</button>
+        </div>
+      </div>
+      <div class="board">
+        <h3 class="board-title">GUEST</h3>
+        <div class="board-score">
+          <p class="board-points" id="guest-board-points">0</p>
+        </div>
+        <div class="add-points-btns">
+          <button class="add-points-btn" onclick="add1GuestPoint()">+1</button>
+          <button class="add-points-btn" onclick="add2GuestPoints()">+2</button>
+          <button class="add-points-btn" onclick="add3GuestPoints()">+3</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
