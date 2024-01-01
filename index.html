@@ -19,18 +19,24 @@
           <button class="add-points-btn" onclick="add3HomePoints()">+3</button>
         </div>
         <h4 class="foul-text">FOULS</h4>
-        <p class="foul-number">00</p>
-        <button class="add-foul-btn">Add Foul</button>
+        <p class="foul-number" id="home-foul-number">00</p>
+        <button class="add-foul-btn" onclick="addHomeFoul()">Add Foul</button>
       </div>
 
       <div class="board">
         <div class="board-timer">
-          <p>08:29</p>
+          <p id="countdown-timer">06:66</p>
+          <button class="start-time-btn" onclick="startTime()">Start</button>
+          <button class="pause-time-btn" onclick="pauseTime()">Pause</button>
+          <button class="resume-time-btn" onclick="resumeTime()">Resume</button>
         </div>
         <div class="board-period">
-          <h4>PERIOD <span>2</span></h4>
+          <h4>PERIOD <span id="period-number">2</span></h4>
         </div>
-        <button class="next-period-btn">Next Period</button>
+        <button class="next-period-btn" onclick="nextPeriod()">
+          Next Period
+        </button>
+        <button class="new-game-btn" onclick="newGame()">New Game</button>
       </div>
 
       <div class="board">
@@ -44,8 +50,8 @@
           <button class="add-points-btn" onclick="add3GuestPoints()">+3</button>
         </div>
         <h4 class="foul-text">FOULS</h4>
-        <p class="foul-number">00</p>
-        <button class="add-foul-btn">Add Foul</button>
+        <p class="foul-number" id="guest-foul-number">00</p>
+        <button class="add-foul-btn" onclick="addGuestFoul()">Add Foul</button>
       </div>
     </div>
     <script src="script.js"></script>

@@ -44,7 +44,7 @@ body {
 
 .board-timer {
   border: 5px solid var(--white);
-  padding: 13px 20px 0px 20px;
+  padding: 13px 20px 10px 20px;
   border-radius: 0.31rem;
   margin-bottom: 10px;
 }
@@ -127,6 +127,12 @@ button {
   line-height: 1.73825rem;
 }
 
+.start-time-btn,
+.pause-time-btn,
+.resume-time-btn {
+  padding: 5px 5px 0 5px;
+}
+
 .next-period-btn {
   width: 50%;
   margin: 5px auto;
@@ -137,18 +143,28 @@ button {
   padding: 5px 10px 0 10px;
 }
 
+.new-game-btn {
+  padding: 5px 0 0 0;
+  width: 70%;
+  margin: 35px auto;
+}
+
 /* Hovers */
-.add-points-btn:hover {
+.add-points-btn:hover,
+.pause-time-btn:hover {
   color: var(--pink);
   border-color: var(--pink);
 }
 
-.next-period-btn:hover {
+.next-period-btn:hover,
+.start-time-btn:hover,
+.new-game-btn:hover {
   color: var(--green);
   border-color: var(--green);
 }
 
-.add-foul-btn:hover {
+.add-foul-btn:hover,
+.resume-time-btn:hover {
   color: var(--yellow);
   border-color: var(--yellow);
 }
