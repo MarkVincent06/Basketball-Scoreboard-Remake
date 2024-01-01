@@ -4,7 +4,7 @@
 
 ## Welcome! 👋
 
-Thanks for viewing my project, this is `solo project` in my journey to become a `full-stack developer.`
+Thanks for viewing my project, this is a `solo project` in my journey to become a `full-stack developer.`
 
 #frontendcareerpath #scrimba
 
