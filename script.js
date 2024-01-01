@@ -2,11 +2,12 @@ let homePoints = 0;
 let guestPoints = 0;
 let homeFoul = 0;
 let guestFoul = 0;
-let countdownTimer = "23:59"; // Initial time
 let periodNumber = 1;
-let timerPaused = false; // Flag to check if the timer is paused
-let remainingTime = 0; // Variable to store remaining time when paused
-let originalCountdownDate = null; // Variable to store the original countdown date
+let countdownTimer = "12:00"; // Initial time
+
+const startingMinutes = 12;
+let time = startingMinutes * 60;
+let timerInterval; // Variable to store the interval ID
 
 let countdownTimerEl = document.getElementById("countdown-timer");
 let periodNumberEl = document.getElementById("period-number");
@@ -26,82 +27,49 @@ guestFoulNumberEl.innerHTML = guestFoul;
 countdownTimerEl.innerHTML = countdownTimer;
 periodNumberEl.innerHTML = periodNumber;
 
-let countdownInterval;
+let isTimerRunning = false;
 
-function countdownTimerStart() {
-  clearInterval(countdownInterval); // Clear existing interval before starting a new one
+function updateCountdown() {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
 
-  let countdownDate = new Date();
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  countdownTimerEl.innerHTML = `${minutes}:${seconds}`;
+  time--;
 
-  if (timerPaused && remainingTime > 0) {
-    // If timer was paused and there's remaining time, start from that remaining time
-    countdownDate.setMilliseconds(
-      countdownDate.getMilliseconds() + remainingTime
-    );
-    remainingTime = 0; // Reset remaining time after resuming
-  } else {
-    originalCountdownDate = new Date(countdownDate); // Store the original countdown date
-    originalCountdownDate.setMinutes(originalCountdownDate.getMinutes() + 23);
-    originalCountdownDate.setSeconds(originalCountdownDate.getSeconds() + 59);
-    countdownDate = originalCountdownDate;
+  if (time < 0) {
+    stopTime();
+    nextPeriod();
   }
-
-  countdownInterval = setInterval(() => {
-    if (!timerPaused) {
-      let now = new Date().getTime();
-      let distance = countdownDate - now;
-
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownTimerEl.innerHTML = `${minutes}:${seconds}`;
-
-      if (distance < 0) {
-        clearInterval(countdownInterval);
-        countdownTimerEl.innerHTML = "00:00"; // Display 00:00 when the timer reaches zero
-      }
-    }
-  }, 1000);
 }
 
 function startTime() {
-  timerPaused = false;
-  countdownTimerStart();
+  if (!isTimerRunning) {
+    timerInterval = setInterval(updateCountdown, 1000);
+    isTimerRunning = true;
+  }
 }
 
-function pauseTime() {
-  timerPaused = true;
-  remainingTime = calculateRemainingTime(); // Store the remaining time when paused
+function stopTime() {
+  clearInterval(timerInterval);
+  isTimerRunning = false;
 }
 
-function resumeTime() {
-  timerPaused = false;
-  countdownTimerStart();
-}
-
-function calculateRemainingTime() {
-  // Calculate remaining time in milliseconds
-  let now = new Date().getTime();
-  let originalCountdownTime = originalCountdownDate.getTime();
-  return originalCountdownTime - now;
+function resetTime() {
+  stopTime(); // Stop the timer if running
+  time = startingMinutes * 60;
+  updateCountdown(); // Update the display immediately
 }
 
 function nextPeriod() {
-  pauseTime(); // Pause the timer before moving to the next period
+  resetTime();
   periodNumberEl.innerHTML = periodNumber += 1;
   if (periodNumber > 4) {
     periodNumberEl.innerHTML = periodNumber = 1;
   }
-  resetTimer();
 }
 
-function resetTimer() {
-  clearInterval(countdownInterval);
-  countdownTimerEl.innerHTML = "23:59"; // Reset the timer to the initial time
-  remainingTime = 0; // Reset remaining time when resetting the timer
-}
-
-function highlightAheadPoints() {
+function highlightLeadingPoints() {
   if (homePoints > guestPoints) {
     guestBoardScoreEl.classList.remove("highlight-border");
     homeBoardScoreEl.classList.add("highlight-border");
@@ -113,31 +81,31 @@ function highlightAheadPoints() {
 
 function add1HomePoint() {
   homeBoardPointsEl.innerHTML = homePoints += 1;
-  highlightAheadPoints();
+  highlightLeadingPoints();
 }
 
 function add2HomePoints() {
   homeBoardPointsEl.innerHTML = homePoints += 2;
-  highlightAheadPoints();
+  highlightLeadingPoints();
 }
 
 function add3HomePoints() {
   homeBoardPointsEl.innerHTML = homePoints += 3;
-  highlightAheadPoints();
+  highlightLeadingPoints();
 }
 
 function add1GuestPoint() {
   guestBoardPointsEl.innerHTML = guestPoints += 1;
-  highlightAheadPoints();
+  highlightLeadingPoints();
 }
 
 function add2GuestPoints() {
   guestBoardPointsEl.innerHTML = guestPoints += 2;
-  highlightAheadPoints();
+  highlightLeadingPoints();
 }
 function add3GuestPoints() {
   guestBoardPointsEl.innerHTML = guestPoints += 3;
-  highlightAheadPoints();
+  highlightLeadingPoints();
 }
 
 function addHomeFoul() {
@@ -153,9 +121,8 @@ function newGame() {
   guestPoints = 0;
   homeFoul = 0;
   guestFoul = 0;
-  countdownTimer = "23:59";
+  let countdownTimer = "12:00";
   periodNumber = 1;
-  timerPaused = false;
 
   homeBoardPointsEl.innerHTML = homePoints;
   guestBoardPointsEl.innerHTML = guestPoints;
@@ -163,4 +130,6 @@ function newGame() {
   guestFoulNumberEl.innerHTML = guestFoul;
   countdownTimerEl.innerHTML = countdownTimer;
   periodNumberEl.innerHTML = periodNumber;
+
+  resetTime();
 }

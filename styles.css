@@ -128,8 +128,8 @@ button {
 }
 
 .start-time-btn,
-.pause-time-btn,
-.resume-time-btn {
+.stop-time-btn,
+.reset-time-btn {
   padding: 5px 5px 0 5px;
 }
 
@@ -151,7 +151,7 @@ button {
 
 /* Hovers */
 .add-points-btn:hover,
-.pause-time-btn:hover {
+.stop-time-btn:hover {
   color: var(--pink);
   border-color: var(--pink);
 }
@@ -164,7 +164,7 @@ button {
 }
 
 .add-foul-btn:hover,
-.resume-time-btn:hover {
+.reset-time-btn:hover {
   color: var(--yellow);
   border-color: var(--yellow);
 }
